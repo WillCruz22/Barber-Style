@@ -2,10 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        width: 300,
-        marginTop: 10,
-        marginLeft: 10,
-        position: "relative",  // necessário para o ícone não flutuar na tela
+    width: "100%",        
+    marginTop: 10,
+    position: "relative",
     },
 
     input: {

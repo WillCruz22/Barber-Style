@@ -10,18 +10,18 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erros, setErros] = useState({ email: "", senha: "" });
-    
+
     const router = useRouter();
-    
+
     const validarEmail = (email: string) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
-    
+
     const validarFormulario = () => {
         let novosErros = { email: "", senha: "" };
         let valido = true;
-        
+
         if (!email.trim()) {
             novosErros.email = "E-mail é obrigatório";
             valido = false;
@@ -29,7 +29,7 @@ export default function Login() {
             novosErros.email = "E-mail inválido";
             valido = false;
         }
-        
+
         if (!senha.trim()) {
             novosErros.senha = "Senha é obrigatória";
             valido = false;
@@ -37,37 +37,35 @@ export default function Login() {
             novosErros.senha = "Senha deve conter no mínimo 6 caracteres";
             valido = false;
         }
-        
+
         setErros(novosErros);
         return valido;
     };
-    
+
     const handleLogin = () => {
         if (validarFormulario()) {
-            console.log("Login válido!");
             router.push("/home");
         }
     };
-    
+
     const handleCadastrar = () => {
         router.push("/cadastro");
     };
-    
+
     return (
         <View style={styles.container}>
-            <View>
-                <Image 
-                    style={styles.logo}
-                    source={require("@/assets/logo/logo.png")} 
-                />
-            </View>
-            
-            <View>
-                <Text style={styles.textPrincipal}>Seja bem vindo!</Text>
-                <Text style={styles.textSecundario}>Entre com suas credenciais!</Text>
-            </View>
-            
-            <View>
+            <Image
+                style={styles.logo}
+                source={require("@/assets/logo/logo.png")}
+            />
+
+            <Text style={styles.textPrincipal}>Seja bem-vindo!</Text>
+            <Text style={styles.textSecundario}>
+                Entre com suas credenciais!
+            </Text>
+
+            {/*  FORMULÁRIO */}
+            <View style={styles.form}>
                 <Text style={styles.labelText}>E-mail</Text>
                 <InputText
                     placeholder="seu@email.com.br"
@@ -77,7 +75,7 @@ export default function Login() {
                 {erros.email ? (
                     <Text style={styles.textoErro}>{erros.email}</Text>
                 ) : null}
-                
+
                 <Text style={styles.labelText}>Senha</Text>
                 <InputText
                     placeholder="Informe sua senha"
@@ -88,24 +86,20 @@ export default function Login() {
                 {erros.senha ? (
                     <Text style={styles.textoErro}>{erros.senha}</Text>
                 ) : null}
-                
-                <View>
-                    <View>
-                        <TextLinks title="Recuperar senha" />
-                    </View>
+
+                <View style={styles.forgot}>
+                    <TextLinks title="Recuperar senha" />
                 </View>
-                
+
                 <Button
                     title="Entrar"
                     onPress={handleLogin}
+                    style={styles.loginButton}
                 />
             </View>
-            
-            <View>
-                <TextLinks 
-                    title="Cadastrar" 
-                    onPress={handleCadastrar}
-                />
+
+            <View style={styles.footer}>
+                <TextLinks title="Cadastrar" onPress={handleCadastrar} />
             </View>
         </View>
     );
