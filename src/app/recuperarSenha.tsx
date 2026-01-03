@@ -1,9 +1,7 @@
-import { Text, View } from "react-native";
+import RecuperarSenha from "@/components/RecuperarSenha/RecuperarSenha";
 
-export default function recuperarSenha(){
+export default function TelaRecuperarSenha(){
     return(
-        <View>
-            <Text>Testando rota</Text>
-        </View>
+       <RecuperarSenha/>
     )
 }

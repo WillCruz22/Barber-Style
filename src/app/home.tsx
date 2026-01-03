@@ -39,13 +39,9 @@ export default function Home() {
                     value="50%"
                     icon={<MaterialIcons name="attach-money" size={18} color="" />}
                 />
-
-                
                 
                 <ProximoAgendamento/>
                 
-
-
                 </View >
                 <View style={styles.container}>
 
